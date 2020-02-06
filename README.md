@@ -1,0 +1,14 @@
+### ProducerApp.java
+This source file contains the basic code needed to produce records to an Apache Kafka cluster. In this class, you can set the number of records that you would like to send at a time. Additionally, this class enables you to establish a sleep timer setting to throttle the rate at which records are sent to the cluster. You can also un-comment a line that enables a random sleep timer setting.
+The functionality in this class is intended to be similar to the kafka-producer-perf-test.sh shell script found in the {KAFKA_HOME}/bin directory.
+### BatchProducerApp.java
+This source file contains the basic code needed to produce records to an Apache Kafka cluster with some functionality to batch and optionally throttle the rate at which records are sent to the cluster. You can un-comment various lines to add throttles at specific points in the record sending loop: between individual record sends and/or between record batches. There is also the ability to use a random sleep timer instead of a fixed value. 
+The functionality in this class is intended to be similar to the kafka-producer-perf-test.sh shell script found in the {KAFKA_HOME}/bin directory.
+### Properties
+As described in Module 4, a Properties class containing the required configuration settings for a Kafka Producer needs to be created. For convenience all of the relevant configuration settings for this course have been provided using the default settings. It is encouraged that you experiment with different settings in conjunction with the broker settings to understand how the behavior changes.
+### ConsumerApp.java
+This source file contains the basic code needed to consume records from one or many Apache Kafka partitions. As discussed in Module 5, the method for consuming records from a specific list of partitions is assign() and it accepts TopicPartition objects representing the partitions of interest. The code to enable partition assignment is provided with some helper functions to list the partitions assigned. The records retrieved from the cluster in the poll loop are printed to the output.
+### ConsumerGroupApp
+This source file contains the basic code needed to consume records from one or many Apache Kafka topics. In contrast to assigning individual partitions as in the ConsumerApp.java file, this class subscribes to topics passed to the subscribe() method as a list of strings. The functionality for printing the subscribed topics and the retrieved records is provided and is similar to the capabilities in the ConsumerApp.java file.
+### Properties
+As described in Module 5, a Properties class containing the required configuration settings for a Kafka Consumer needs to be created. For convenience all of the relevant configuration settings for this course have been provided using the default settings. It is encouraged that you experiment with different settings in conjunction with the broker settings to understand how the behavior changes.
