@@ -11,23 +11,23 @@ public class ConsumerApp {
         props.put("bootstrap.servers", "localhost:9092, localhost:9093");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        props.put("fetch.min.bytes", 1);
+        props.put("fetch.min.bytes", 1);//fetch的数据没达到设定值时，不会fetch数据
         props.put("group.id", "");
         props.put("heartbeat.interval.ms", 3000);
         props.put("max.partition.fetch.bytes", 1048576);
         props.put("session.timeout.ms", 30000);
-        props.put("auto.offset.reset", "latest");
+        props.put("auto.offset.reset", "latest");//第一次读取需要消费的topic的offset读取位置配置
         props.put("connections.max.idle.ms", 540000);
-        props.put("enable.auto.commit", true);
+        props.put("enable.auto.commit", true);//是否自动提交last commit log
         props.put("exclude.internal.topics", true);
-        props.put("max.poll.records", 2147483647);
+        props.put("max.poll.records", 2147483647);//poll从cluster获取的最大数据量，保证数据能正常的被customer处理
         props.put("partition.assignment.strategy", "org.apache.kafka.clients.consumer.RangeAssignor");
         props.put("request.timeout.ms", 40000);
-        props.put("auto.commit.interval.ms", 5000);
-        props.put("fetch.max.wait.ms", 500);
+        props.put("auto.commit.interval.ms", 5000);//自动提交last commit log 的间隔时间
+        props.put("fetch.max.wait.ms", 500);//fetch topic数据的等待时间，类似produce的linger.ms
         props.put("metadata.max.age.ms", 300000);
         props.put("reconnect.backoff.ms", 50);
-        props.put("retry.backoff.ms", 100);
+        props.put("retry.backoff.ms", 100);//非自动同步提交last commit log 时（异步提交失效），提交last commit log 失败时，重新发起提交的间隔时间
         props.put("client.id", "");
 
 
